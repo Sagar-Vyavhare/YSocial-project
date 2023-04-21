@@ -1,0 +1,90 @@
+.signup-container {
+  background-image:linear-gradient(rgba(245, 134, 15, 0.792),rgba(97, 138, 220, 0.322));
+  width: 40%;
+  margin: 2rem auto;
+  border-radius: 1rem;
+}
+
+.signup-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 1rem;
+  color: aliceblue;
+}
+
+.signup-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 4rem;
+  /* gap: 1rem; */
+}
+
+.signup-form-group {
+  display: grid;
+  align-items: stretch;
+}
+.signup-form-group input[type="text"],
+input[type="date"],
+select {
+  height: 2.3rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  margin: 0 0.6rem;
+  padding-left: 0.5rem;
+}
+.signup-form-group span {
+  position: relative;
+  top: -0.5rem;
+  left: 1rem;
+  color: crimson;
+}
+
+  /* .signup-form-group input[type="text"]:focus,
+  input[type="date"]:focus,
+  select :focus {
+    border: 1px solid rgb(0, 255, 76);
+  } */
+
+.signup-form-group input[type="text"]::placeholder {
+
+}
+.signup-form-group input[type="text"]:focus,
+input[type="date"]:focus,
+select {
+  outline: none;
+}
+.signup-form-group input[type="file"] {
+  font-size: 1rem;
+  border: none;
+}
+.signup-form-group input[type="file"]:focus {
+  font-size: 1rem;
+  border: none;
+  outline: none;
+}
+.signup-container input[type="button"] {
+  width: 60%;
+  height: 2.2rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1.3rem;
+  border: none;
+  text-align: center;
+  background-color: rgb(30, 45, 180);
+  color: white;
+  position: relative;
+  left: 20%;
+  cursor: pointer;
+}
+.signup-container p {
+  text-align: center;
+  color: rgb(49, 43, 43);
+  font-weight: 500;
+  padding-bottom: 1rem;
+}
+
+.signup-container .have-account span{
+  color: green;
+  cursor: pointer;
+}

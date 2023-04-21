@@ -1,0 +1,127 @@
+nav {
+  background-color: rgb(16, 35, 179);
+  min-width: 320px;
+  height: 2.3rem;
+  /* z-index: 2; */
+
+}
+
+nav .nav-container {
+  margin: auto 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+nav .nav-container h1 {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 490;
+}
+.menu-items {
+  width: 95%;
+  margin: 0 auto;
+  z-index: 3;
+}
+.menu-bar{
+  cursor: pointer;
+}
+
+
+nav .nav-container .menu {
+  min-width: 90vw;
+  position: absolute;
+  top: 2.6rem;
+  left: 9%;
+  margin-right: 2rem;
+  background-color: rgb(111, 161, 212);
+}
+
+.menu-header {
+  width: 96%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid black;
+  /* justify-content: space-around; */
+}
+.menu-body{
+  margin: 0.5rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-content: space-between;
+
+}
+
+.menu-body p{
+  color: rgb(19, 37, 48);
+  font-size: 1.2rem;
+  /* margin-right: 13rem; */
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+  display: inline;
+  
+}
+.menu-body p:hover{
+  color: rgba(255, 255, 255, 0.768);
+}
+.menu-header img {
+  margin-top: 5px;
+  width: 68px;
+  height: 68px;
+  margin-right: 1.3rem;
+}
+
+.menu-header div h4 {
+  color: rgba(0, 0, 0, 0.914);
+  letter-spacing: 0.2px;
+  font-size: 1.5rem;
+}
+.edit-btn {
+  border: 1px solid rgb(12, 210, 255);
+  color: rgb(38, 112, 128);
+  border-radius: 5px;
+  padding-bottom: 3px;
+  outline: none;
+  margin-top: 2px;
+  width: 8rem;
+}
+
+.edit-btn:hover {
+  background-color: rgb(12, 210, 255);
+  color: whitesmoke;
+  border: 1px solid rgb(0, 136, 255);
+  font-weight: 500;
+}
+
+@media (min-width: 760px) {
+  nav {
+    height: 3rem;
+  }
+  nav .nav-container {
+    margin: auto 1rem;
+    padding-top: 0.4rem;
+  }
+  nav .nav-container .menu {
+    min-width: 40vw;
+    top: 9%;
+    left: 59%;
+  }
+}
+@media (min-width: 1024px) {
+  nav {
+    height: 3rem;
+  }
+  nav .nav-container {
+    margin: auto 1rem;
+    padding-top: 0.4rem;
+  }
+  nav .nav-container .menu {
+    min-width: 30vw;
+    top: 10%;
+    left: 69%;
+  }
+}

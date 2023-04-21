@@ -1,0 +1,112 @@
+.posts-container {
+  position: relative;
+  top: 3rem;
+  left: 1.5rem;
+  width: 55%;
+  /* border: 1px solid rgb(215, 211, 211); */
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px rgb(207, 203, 203);
+  padding: 0.5rem;
+  margin-bottom:2rem;
+}
+.posts-container .header {
+  display: flex;
+  flex-direction: column;
+}
+.posts-container .header .details {
+  display: flex;
+}
+.posts-container .header .details div img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  border-radius: 90px;
+}
+.posts-container .header .details h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-left: 0.3rem;
+  position: relative;
+  top: -0.2rem;
+}
+.posts-container .header .details h6 {
+  margin: 0;
+  font-weight: 500;
+  margin-left: 0.3rem;
+  position: relative;
+  top: -0.2rem;
+}
+.posts-container .header .about-post{
+    height: auto;
+}
+.posts-container .header .about-post h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: rgb(49, 53, 53);
+}
+.posts-container .header .about-post .hide {
+  max-height: 2.9rem;
+  overflow: hidden;
+  margin: 0;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: rgb(36, 39, 39);
+  /* letter-spacing: 0.1px; */
+}
+.posts-container .header .about-post h5::first-line {
+  padding-left: 1rem;
+}
+.toggler {
+  position: relative;
+  top: -1.5rem;
+  left: 89%;
+  z-index: 0;
+  display: inline;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  background-color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: rgba(87, 103, 149, 0.71)
+}
+.more {
+  height: auto;
+  margin: 0;
+  color: rgb(36, 39, 39);
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+.posts-container .body img{
+ width: 100%;
+ height: auto;
+ border-radius: 0.2rem;
+}
+.posts-container .give-like{
+  display: flex;
+  justify-content: space-around;
+}
+
+.posts-container .give-like > div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.posts-container .give-like > div p{
+  color: black;
+  margin: 0;
+  text-align: center;
+}
+.posts-container .give-like img{
+  width: 1.8rem;
+  cursor: pointer;
+}
+
+.commnets{
+  position: relative;
+  width: 100%;
+
+}

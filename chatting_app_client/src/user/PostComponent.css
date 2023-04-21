@@ -1,0 +1,89 @@
+.wrapper {
+  display: grid;
+  min-height: 320px;
+  background-color: rgb(255, 255, 255);
+  grid-template-columns: repeat(1, 1fr);
+  margin-bottom: 0.1rem;
+  z-index: 2;
+}
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0.3rem;
+}
+.post-header .user-image {
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+}
+.post-header .header-text span {
+  font-size: 0.7rem;
+}
+.post-body {
+  min-height: 12rem;
+}
+.post-header .ellipsis {
+  width: 2.1rem;
+  height: 2.1rem;
+  cursor: pointer;
+}
+.post-header .user-img-text {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  min-width: 25vw;
+}
+.post-header .user-img-text .user-image {
+  margin: auto;
+}
+.likes{
+  padding: 0;
+}
+.header-text h3 {
+  margin: 0;
+}
+.images {
+  width: 100%;
+  display: block;
+  /* height: 60vh; */
+  object-fit: fill;
+
+  image-resolution: 100;
+}
+.post-footer {
+  margin: 0 0.2rem;
+}
+.post-footer .total {
+  display: flex;
+  justify-content: space-between;
+  height: 2rem;
+  align-items: center;
+}
+.total {
+  border-bottom: 1px solid rgb(177, 164, 164);
+  padding-bottom: 0.1rem;
+}
+.likes .likes-images {
+  width: 1rem;
+  border: 1px solid rgb(254, 253, 253);
+  border-radius: 50px;
+}
+
+.post-coments span {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.like-share-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.2rem;
+}
+.like-share-button img {
+  width: 1.5rem;
+  cursor: pointer;
+}
+@media (min-width:1440px) {
+  
+}

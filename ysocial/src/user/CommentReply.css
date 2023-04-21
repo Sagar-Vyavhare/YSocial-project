@@ -1,0 +1,25 @@
+.reply-container{
+display: flex;
+justify-content: space-between;
+align-items: self-start;
+border: 1px solid powderblue;
+width: 90%;
+margin: 0 auto ;
+padding: 0.2rem;
+height: 5rem;
+}
+
+.reply-container > button{
+    cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding-bottom: 1rem;
+    background: transparent;
+    border: none;
+}
+
+.reply-container > button:hover{
+    
+    border: 1px solid rgba(195, 188, 188, 0.693);
+    border-radius: 50%;
+}

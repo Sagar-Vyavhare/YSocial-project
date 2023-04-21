@@ -1,0 +1,14 @@
+
+.user-container{
+    width: 100%;
+    display: flex;
+}
+aside{
+    width: 20%;
+    display: inline-block;
+}
+.leftside{
+    width: 80%;
+    /* display: inline; */
+    
+}
