@@ -96,20 +96,20 @@ export default function PostComment() {
         <div className="header">
           <div className="details">
             <div>
-              <img src={post.user_details.user_photo} alt="" />
+              {/* <img src={post.user_details.user_photo} alt="" /> */}
             </div>
             <div>
               <h4>
-                {post.user_details.first_name +
+                {/* {post.user_details.first_name +
                   " " +
-                  post.user_details.last_name}
+                  post.user_details.last_name} */}
               </h4>
-              {/* <h6>{post.post_date}</h6>  */}
+              <h6>{post.post_date}</h6> 
             </div>
           </div>
           <div className="about-post">
-            {/* <h2>{post.post_title}</h2> */}
-            {/* <p className={descToggle}>{post.post_description}</p> */}
+            <h2>{post.post_title}</h2>
+            <p className={descToggle}>{post.post_description}</p>
             <h5
               className="toggler"
               onClick={
@@ -122,7 +122,7 @@ export default function PostComment() {
             </h5>
           </div>
         </div>
-        <div className="body">{/* <img src={post.photo} alt="" /> */}</div>
+        <div className="body"><img src={post.photo} alt="" /></div>
         <div className="footer">
           <div className="give-like">
             <img

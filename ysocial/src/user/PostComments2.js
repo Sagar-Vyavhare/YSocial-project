@@ -21,13 +21,13 @@ export default function PostComments2() {
 
   // to store pos data
   const [post, setPost] = useState([]);
-    const {id}=useParams();
+  const { id } = useParams();
   // toggle post comment and comment reply
   const [toggler, setTogler] = useState(true);
 
   useEffect(() => {
     axios.get(`http://localhost:9090/api/post/${id}`).then((resp) => {
-      setPost(n=>n=resp.data);
+      setPost((n) => (n = resp.data));
     });
     console.log(post);
     getPostData();
@@ -39,70 +39,66 @@ export default function PostComments2() {
 
   return (
     <>
-          
-                   <div
-                     className="posts-container"
-                     style={{ margin: "0 auto" }}
-                   >
-                     <div className="header">
-                       <div className="details">
-                         <div>
-                           {/* <img src={post.user_details.user_photo} alt="" /> */}
-                         </div>
-                         <div>
-                           <h4>
-                             {/* {post.user_details.first_name +
+      <div className="posts-container" style={{ margin: "0 auto" }}>
+        <div className="header">
+          <div className="details">
+            <div>
+              {/* <img src={post.user_details.user_photo} alt="" /> */}
+            </div>
+            <div>
+              <h4>
+                {/* {post.user_details.first_name +
                                " " +
                                post.user_details.last_name} */}
-                           </h4>
-                           <h6>{post.post_date}</h6>
-                         </div>
-                       </div>
-                       <div className="about-post">
-                         <h2>{post.post_title}</h2>
-                         <p className={descToggle}>{post.post_description}</p>
-                         <h5
-                           className="toggler"
-                           onClick={
-                             descToggle === "hide"
-                               ? () => setDescToggle("more")
-                               : () => setDescToggle("hide")
-                           }
-                         >
-                           ... {descToggle == "hide" ? "More" : "Less"}
-                         </h5>
-                       </div>
-                     </div>
-                     <div className="body">
-                       <img src={post.photo} alt="" />
-                     </div>
-                     <div className="footer">
-                       <div className="give-like">
-                         <img
-                           src={likeimg}
-                           onClick={
-                             likeimg == like
-                               ? () => setLikeImg(afterLike)
-                               : () => setLikeImg(like)
-                           }
-                           width="20rem"
-                           alt=""
-                         />
-                         <img
-                           src={disLikeimg}
-                           onClick={
-                             disLikeimg == dislike
-                               ? () => setDisLikeImg(afterDislike)
-                               : () => setDisLikeImg(dislike)
-                           }
-                           width="20rem"
-                           alt=""
-                         />
-                         <img src={send} width="20rem" alt="" />
-                       </div>
-                     </div>
-                   </div>;
-           
+              </h4>
+              <h6>{post.post_date}</h6>
+            </div>
+          </div>
+          <div className="about-post">
+            <h2>{post.post_title}</h2>
+            <p className={descToggle}>{post.post_description}</p>
+            <h5
+              className="toggler"
+              onClick={
+                descToggle === "hide"
+                  ? () => setDescToggle("more")
+                  : () => setDescToggle("hide")
+              }
+            >
+              ... {descToggle == "hide" ? "More" : "Less"}
+            </h5>
+          </div>
+        </div>
+        <div className="body">
+          <img src={post.photo} alt="" />
+        </div>
+        <div className="footer">
+          <div className="give-like">
+            <img
+              src={likeimg}
+              onClick={
+                likeimg == like
+                  ? () => setLikeImg(afterLike)
+                  : () => setLikeImg(like)
+              }
+              width="20rem"
+              alt=""
+            />
+            <img
+              src={disLikeimg}
+              onClick={
+                disLikeimg == dislike
+                  ? () => setDisLikeImg(afterDislike)
+                  : () => setDisLikeImg(dislike)
+              }
+              width="20rem"
+              alt=""
+            />
+            <img src={send} width="20rem" alt="" />
+          </div>
+        </div>
+      </div>
+      ;
     </>
   );
 }

@@ -6,7 +6,6 @@ import UserComponent from "../user/UserComponent";
 import PostComment from '../user/PostComment';
 import Navbar from '../user/NavbarComponent';
 import AdminComponent from '../admin/AdminComponent';
-import PostComments2 from '../user/PostComments2';
 export default function CommonComponenet() {
   return (
     <Router>
@@ -19,7 +18,7 @@ export default function CommonComponenet() {
           <Route path="" Component={UserComponent} />
           <Route
             path="post-comment/:id"
-            Component={PostComments2}
+            Component={PostComment}
           />
         </Route>
         <Route exact path="admin">
