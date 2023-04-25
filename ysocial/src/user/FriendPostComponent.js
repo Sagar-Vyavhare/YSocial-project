@@ -18,28 +18,27 @@ export default function FriendPostComponent({ User_data }) {
   const [totalLikes, setTotalLikes] = useState(0);
   const [TotalDislikes, setTotalDislikes] = useState(0);
   const global_data = useContext(data);
-
   // to navigate user
   const navigate = useNavigate();
   useEffect(() => {
-    getTotalLikes();
+    getTotalLikesDislikes(); 
   }, []);
 
-  const getTotalLikes = () => {
+  const getTotalLikesDislikes = () => {
     let like_cnt = 0;
     let dislike_cnt = 0;
     User_data.likes_dislikes.map((d) => {
       
       if (d.is_like) {
         like_cnt++;
-        if (global_data.userData.user_id == d.user_details.user_id) {
+        if (global_data.userData.user_id === d.user_details.user_id) {
           setLikeImg(afterLike);
         }
       } else {
         dislike_cnt++;
-        if (global_data.userData.user_id == d.user_details.user_id) {
+        if (global_data.userData.user_id === d.user_details.user_id) {
           setDisLikeImg(afterDislike);
-        }
+        } 
       }
     });
     setTotalLikes(like_cnt);
@@ -64,6 +63,7 @@ export default function FriendPostComponent({ User_data }) {
       }
     } else {
       setLikeImg(like);
+      addLike(1);
       setTotalLikes((n) => n - 1);
     }
   }
@@ -91,6 +91,7 @@ export default function FriendPostComponent({ User_data }) {
         setTotalLikes((n) => n - 1);
       }
     } else {
+      addLike(0);
       setDisLikeImg(dislike);
       setTotalDislikes((n) => n - 1);
     }
