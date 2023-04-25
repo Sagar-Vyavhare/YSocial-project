@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import profile from "../images/profile.png";
 import "./FriendPostComponent.css";
 import afterLike from "../images/after-like.png";
@@ -8,13 +8,16 @@ import dislike from "../images/dislike.png";
 import comment from "../images/comment.png";
 import send from "../images/send.png";
 import { useNavigate } from "react-router-dom";
-export default function FriendPostComponent({ data }) {
+import data from "../context/GlobalData";
+import axios from "axios";
+export default function FriendPostComponent({ User_data }) {
   // to togle description
   const [descToggle, setDescToggle] = useState("hide");
   const [likeimg, setLikeImg] = useState(like);
   const [disLikeimg, setDisLikeImg] = useState(dislike);
   const [totalLikes, setTotalLikes] = useState(0);
   const [TotalDislikes, setTotalDislikes] = useState(0);
+  const global_data = useContext(data);
 
   // to navigate user
   const navigate = useNavigate();
@@ -23,13 +26,24 @@ export default function FriendPostComponent({ data }) {
   }, []);
 
   const getTotalLikes = () => {
-    let cnt = 0;
-    data.likes_dislikes.map((d) => {
+    let like_cnt = 0;
+    let dislike_cnt = 0;
+    User_data.likes_dislikes.map((d) => {
+      
       if (d.is_like) {
-        cnt++;
+        like_cnt++;
+        if (global_data.userData.user_id == d.user_details.user_id) {
+          setLikeImg(afterLike);
+        }
+      } else {
+        dislike_cnt++;
+        if (global_data.userData.user_id == d.user_details.user_id) {
+          setDisLikeImg(afterDislike);
+        }
       }
     });
-    setTotalLikes(cnt);
+    setTotalLikes(like_cnt);
+    setTotalDislikes(dislike_cnt);
   };
 
   // to comment a post
@@ -39,9 +53,9 @@ export default function FriendPostComponent({ data }) {
 
   //to increase like of a post
   function setalike() {
-    console.log(data);
-
+    console.log(User_data);
     if (likeimg === like) {
+      addLike(1); 
       setLikeImg(afterLike);
       setDisLikeImg(dislike);
       setTotalLikes((n) => n + 1);
@@ -53,9 +67,23 @@ export default function FriendPostComponent({ data }) {
       setTotalLikes((n) => n - 1);
     }
   }
+
+  function addLike(like) {
+    console.log("hello smarnika");
+    let obj = {
+      like_dislike_date: new Date().toLocaleDateString(),
+      is_like: like,
+      user_details: { user_id: global_data.userData.user_id },
+      user_post: {
+        post_id: User_data.post_id,
+      },
+    };
+    axios.post("http://localhost:9090/post_like_dislike",obj);
+  }
   // to set dislike
   function setDisLike() {
     if (disLikeimg === dislike) {
+      addLike(0);
       setDisLikeImg(afterDislike);
       setLikeImg(like);
       setTotalDislikes((n) => n + 1);
@@ -75,25 +103,25 @@ export default function FriendPostComponent({ data }) {
             <div>
               <img
                 src={
-                  data.user_details.user_photo === null
+                  User_data.user_details.user_photo === null
                     ? profile
-                    : data.user_details.user_photo
+                    : User_data.user_details.user_photo
                 }
                 alt=""
               />
             </div>
             <div>
               <h4>
-                {data.user_details.first_name +
+                {User_data.user_details.first_name +
                   " " +
-                  data.user_details.last_name}
+                  User_data.user_details.last_name}
               </h4>
-              <h6>{data.post_date}</h6>
+              <h6>{User_data.post_date}</h6>
             </div>
           </div>
           <div className="about-post">
-            <h2>{data.post_title}</h2>
-            <p className={descToggle}>{data.post_description}</p>
+            <h2>{User_data.post_title}</h2>
+            <p className={descToggle}>{User_data.post_description}</p>
             <h5
               className="toggler"
               onClick={
@@ -107,7 +135,7 @@ export default function FriendPostComponent({ data }) {
           </div>
         </div>
         <div className="body">
-          <img src={data.photo} alt="" />
+          <img src={User_data.photo} alt="" />
         </div>
         <div className="footer">
           <div className="give-like">
@@ -124,7 +152,7 @@ export default function FriendPostComponent({ data }) {
                 src={comment}
                 width="20rem"
                 alt=""
-                onClick={() => postComment(data.post_id)}
+                onClick={() => postComment(User_data.post_id)}
               />
               <p>2</p>
             </div>

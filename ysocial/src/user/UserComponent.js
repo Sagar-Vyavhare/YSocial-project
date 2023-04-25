@@ -27,7 +27,7 @@ export default function UserComponent() {
         <section className="leftside">
           <PostComponent />
           {posts.map((d, k) => {
-            return <FriendPostComponent data={d} key={k}/>;
+            return <FriendPostComponent User_data={d} key={k} />;
           })}
         </section>
       </div>
