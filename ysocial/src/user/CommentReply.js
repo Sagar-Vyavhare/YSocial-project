@@ -2,9 +2,14 @@ import React, { useContext, useRef } from "react";
 import "./CommentReply.css";
 import axios from "axios";
 import data from "../context/GlobalData";
-export default function CommentReply({ postcomment, setTogler, commentId }) {
+export default function CommentReply({
+  postcomment,
+  setTogler,
+  commentId,
+  getCommentReplies,
+}) {
   const comment = useRef();
-    const GlobalData = useContext(data);
+  const GlobalData = useContext(data);
   const sendCommentReply = () => {
     let reply_mesage = comment.current.value;
     let obj = {
@@ -15,7 +20,7 @@ export default function CommentReply({ postcomment, setTogler, commentId }) {
     };
     axios
       .post("http://localhost:9090/api/comment-reply", obj)
-      .then((resp) => console.log(resp.data));
+      .then((resp) => getCommentReplies());
   };
   return (
     <>

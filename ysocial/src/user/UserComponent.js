@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from "react";
-import FriendPostComponent from "./FriendPostComponent";
-import PostComponent from "./NewPostComponent";
-import SideBarComponent from "./SideBarComponent";
+
 import "./UserComponent.css";
-import axios from "axios";
-
+import { Outlet } from "react-router-dom";
+import SideBarComponent from "./SideBarComponent";
 export default function UserComponent() {
-  // to store user post
-  const [posts, setposts] = useState([]);
 
-  useEffect(() => {
-    getAllPost();
-  }, []);
-  // to get all user posts
-  const getAllPost = () => {
-    axios
-      .get("http://localhost:9090/api/post")
-      .then((resp) => setposts(resp.data));
-  };
   return (
     <>
       <div className="user-container">
@@ -25,10 +11,7 @@ export default function UserComponent() {
           <SideBarComponent />
         </aside>
         <section className="leftside">
-          <PostComponent />
-          {posts.map((d, k) => {
-            return <FriendPostComponent User_data={d} key={k} />;
-          })}
+          <Outlet/>
         </section>
       </div>
     </>

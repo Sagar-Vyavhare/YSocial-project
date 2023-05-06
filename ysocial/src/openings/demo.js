@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import profile from "../images/profile.png";
-import "./FriendPostComponent.css";
+import "../user/FriendPostComponent.css";
 import afterLike from "../images/after-like.png";
 import like from "../images/like.png";
 import afterDislike from "../images/after-dislike.png";
@@ -10,33 +10,24 @@ import send from "../images/send.png";
 import { useNavigate } from "react-router-dom";
 import data from "../context/GlobalData";
 import axios from "axios";
-export default function FriendPostComponent({ User_data }) {
+export default function Demo({ User_data }) {
   // to togle description
   const [descToggle, setDescToggle] = useState("hide");
   const [likeimg, setLikeImg] = useState(like);
   const [disLikeimg, setDisLikeImg] = useState(dislike);
   const [totalLikes, setTotalLikes] = useState(0);
   const [TotalDislikes, setTotalDislikes] = useState(0);
-  const [totalComments, setTotalComments] = useState(0)
   const global_data = useContext(data);
   // to navigate user
   const navigate = useNavigate();
   useEffect(() => {
-    getTotalLikesDislikes(); 
-    gettotalcomments();
+    // getTotalLikesDislikes();
   }, []);
-
-  const gettotalcomments = () => {
-    axios
-      .get(`http://localhost:9090/api/comment/total-comments?id=${User_data.post_id}`)
-      .then(resp=>setTotalComments(resp.data));
-}
 
   const getTotalLikesDislikes = () => {
     let like_cnt = 0;
     let dislike_cnt = 0;
     User_data.likes_dislikes.map((d) => {
-      
       if (d.is_like) {
         like_cnt++;
         if (global_data.userData.user_id === d.user_details.user_id) {
@@ -46,7 +37,7 @@ export default function FriendPostComponent({ User_data }) {
         dislike_cnt++;
         if (global_data.userData.user_id === d.user_details.user_id) {
           setDisLikeImg(afterDislike);
-        } 
+        }
       }
     });
     setTotalLikes(like_cnt);
@@ -62,7 +53,7 @@ export default function FriendPostComponent({ User_data }) {
   function setalike() {
     console.log(User_data);
     if (likeimg === like) {
-      addLike(1); 
+      addLike(1);
       setLikeImg(afterLike);
       setDisLikeImg(dislike);
       setTotalLikes((n) => n + 1);
@@ -77,6 +68,7 @@ export default function FriendPostComponent({ User_data }) {
   }
 
   function addLike(like) {
+    console.log("hello smarnika");
     let obj = {
       like_dislike_date: new Date().toLocaleDateString(),
       is_like: like,
@@ -85,7 +77,7 @@ export default function FriendPostComponent({ User_data }) {
         post_id: User_data.post_id,
       },
     };
-    axios.post("http://localhost:9090/post_like_dislike",obj);
+    axios.post("http://localhost:9090/post_like_dislike", obj);
   }
   // to set dislike
   function setDisLike() {
@@ -142,9 +134,7 @@ export default function FriendPostComponent({ User_data }) {
             </h5>
           </div>
         </div>
-        <div className="body">
-          <img src={User_data.photo} alt="" />
-        </div>
+        <div className="body"></div>
         <div className="footer">
           <div className="give-like">
             <div>
@@ -162,7 +152,7 @@ export default function FriendPostComponent({ User_data }) {
                 alt=""
                 onClick={() => postComment(User_data.post_id)}
               />
-              <p>{totalComments}</p>
+              <p>2</p>
             </div>
             <div>
               <img src={send} width="20rem" alt="" />

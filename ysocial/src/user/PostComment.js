@@ -50,9 +50,13 @@ export default function PostComment() {
     getCommentReplies();
   }, []);
   const getPostData = async () => {
-    await axios.get(`http://localhost:9090/api/post/${id}`).then((resp) => {
-      setPost(resp.data);
-    });
+    await axios
+      .get(`http://localhost:9090/api/post/${id}`)
+      .then((resp) => {
+        setPost(resp.data)
+        console.log(resp.data);
+      }
+      );
     console.log(post);
   };
   // to send comment
@@ -67,7 +71,7 @@ export default function PostComment() {
     if (comment_message !== "") {
       axios
         .post("http://localhost:9090/api/comment", obj)
-        .then((resp) => console.log(resp.data));
+        .then((resp) => { getComments(); comment.current.value="" });
     }
   };
 
@@ -211,6 +215,7 @@ export default function PostComment() {
             postcomment={postcomment}
             setTogler={setTogler}
             commentId={commentId}
+            getCommentReplies={getCommentReplies}
           />
         </div>
       </section>

@@ -7,6 +7,7 @@ import question from'../images/question-mark.png'
 import suitcase from "../images/suitcase.png";
 import event from "../images/event.png";
 import "./SideBarComponent.css";
+import { Link } from 'react-router-dom';
 export default function SideBarComponent() {
   return (
     <div className="sidebar">
@@ -32,7 +33,9 @@ export default function SideBarComponent() {
       </div>
       <div className="sidebar-content">
         <img src={suitcase} alt="" />
-        <h4>Jobs</h4>
+        <h4>
+          <Link to="openings">Jobs</Link>
+        </h4>
       </div>
       <div className="sidebar-content">
         <img src={event} alt="" />
