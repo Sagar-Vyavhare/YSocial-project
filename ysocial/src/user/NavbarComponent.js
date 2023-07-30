@@ -52,11 +52,10 @@ export default function Navbar() {
             }
             alt="profile"
           />
-          <img src={setting} alt="setting" />
           <img src={exit} alt="exit" onClick={logOut} />
         </div>
       </div>
-      <Outlet />
+      <Outlet/>
     </>
   );
 }

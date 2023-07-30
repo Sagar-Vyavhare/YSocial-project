@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import profile from "../images/profile.png";
-import flower from "../images/flower.jpg";
 import afterLike from "../images/after-like.png";
 import like from "../images/like.png";
 import afterDislike from "../images/after-dislike.png";
@@ -40,24 +39,19 @@ export default function PostComment() {
   // to get form data
   const comment = useRef();
 
-  useEffect(() => {
-    getPostData();
-  }, []);
-
   // to run on component load
   useEffect(() => {
+    getPostData();
+
     getComments();
     getCommentReplies();
   }, []);
   const getPostData = async () => {
-    await axios
-      .get(`http://localhost:9090/api/post/${id}`)
-      .then((resp) => {
-        setPost(resp.data)
-        console.log(resp.data);
-      }
-      );
-    console.log(post);
+    await axios.get(`http://localhost:9090/api/post/${id}`).then((resp) => {
+      setPost(resp.data)
+      console.log(post);
+    });
+    // console.log(post);
   };
   // to send comment
   const sendComment = () => {
@@ -69,9 +63,10 @@ export default function PostComment() {
       user_post: { post_id: id },
     };
     if (comment_message !== "") {
-      axios
-        .post("http://localhost:9090/api/comment", obj)
-        .then((resp) => { getComments(); comment.current.value="" });
+      axios.post("http://localhost:9090/api/comment", obj).then((resp) => {
+        getComments();
+        comment.current.value = "";
+      });
     }
   };
 
@@ -99,16 +94,14 @@ export default function PostComment() {
       <div className="posts-container" style={{ margin: "0 auto" }}>
         <div className="header">
           <div className="details">
-            <div>
-              {/* <img src={post.user_details.user_photo} alt="" /> */}
-            </div>
+            {/* <div><img src={post.user_details.user_photo} alt="" /></div> */}
             <div>
               <h4>
                 {/* {post.user_details.first_name +
                   " " +
                   post.user_details.last_name} */}
               </h4>
-              <h6>{post.post_date}</h6> 
+              <h6>{post.post_date}</h6>
             </div>
           </div>
           <div className="about-post">
@@ -122,17 +115,19 @@ export default function PostComment() {
                   : () => setDescToggle("hide")
               }
             >
-              ... {descToggle == "hide" ? "More" : "Less"}
+              ... {descToggle === "hide" ? "More" : "Less"}
             </h5>
           </div>
         </div>
-        <div className="body"><img src={post.photo} alt="" /></div>
+        <div className="body">
+          <img src={post.photo} alt="" />
+        </div>
         <div className="footer">
           <div className="give-like">
             <img
               src={likeimg}
               onClick={
-                likeimg == like
+                likeimg === like
                   ? () => setLikeImg(afterLike)
                   : () => setLikeImg(like)
               }
@@ -142,7 +137,7 @@ export default function PostComment() {
             <img
               src={disLikeimg}
               onClick={
-                disLikeimg == dislike
+                disLikeimg === dislike
                   ? () => setDisLikeImg(afterDislike)
                   : () => setDisLikeImg(dislike)
               }
@@ -182,7 +177,7 @@ export default function PostComment() {
                   commentsReplies.coment_reply.map((reply) => {
                     return (
                       <> */}
-                <img src={profile} width="50px" />
+                <img src={profile} width="50px" alt="user profile"/>
                 <div>
                   <div className="about-comment">
                     <h4>user name</h4>
